@@ -4,4 +4,8 @@
 # Examples:
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+#   Character.create(name: 'Luke', movie: movies.first
+Team.create(section: "Human Resources")
+Member.create(name: "Tino", level: "3")
+Project.create(name: "phone design", description: "design mockup of new
+phone model", time: 4)
