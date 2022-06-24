@@ -15,16 +15,23 @@ ActiveRecord::Schema.define(version: 2022_06_23_011832) do
   create_table "members", force: :cascade do |t|
     t.string "name"
     t.integer "level"
+    t.string "password_digest"
+    t.integer "team_id"
+    t.integer "project_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["project_id"], name: "index_members_on_project_id"
+    t.index ["team_id"], name: "index_members_on_team_id"
   end
 
   create_table "projects", force: :cascade do |t|
     t.string "name"
     t.string "description"
     t.integer "time"
+    t.integer "team_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["team_id"], name: "index_projects_on_team_id"
   end
 
   create_table "teams", force: :cascade do |t|
@@ -33,4 +40,7 @@ ActiveRecord::Schema.define(version: 2022_06_23_011832) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "members", "projects"
+  add_foreign_key "members", "teams"
+  add_foreign_key "projects", "teams"
 end

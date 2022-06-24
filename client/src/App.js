@@ -14,6 +14,7 @@ function App() {
         }}>
         <Link to="/projects">My Projects</Link>
         <Link to="/login">Login</Link>
+        <Link to="/team">My Team</Link>
       </nav>
     </div>
   );
