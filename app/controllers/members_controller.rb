@@ -5,17 +5,21 @@ class MembersController < ApplicationController
     end
 
     def show
-        member = Member.find_by(id: params[:id])
-        if member
-        render json: member
+        if current_user
+        render json: current_user, status: :ok 
         else
-            render json: {error:"member not found"}, status: :not_found
+            render json: {error:"not authenticated"}, status: :unauthorized 
         end
     end
 
     def create
         member = Member.create!(member_params)
-        render json: member
+        if member.valid?
+            session[:member_id] = member.id
+        render json: member, status: :created
+        else
+            render json: {error: "not valid"}, status: :unprocessable_entity
+        end
     end
 
     def update
@@ -41,6 +45,6 @@ class MembersController < ApplicationController
     private
 
     def member_params
-        params.permit(:name, :level)
+        params.permit(:username, :name, :password)
     end
 end

@@ -15,7 +15,9 @@ ActiveRecord::Schema.define(version: 2022_06_23_011832) do
   create_table "members", force: :cascade do |t|
     t.string "name"
     t.integer "level"
+    t.string "username"
     t.string "password_digest"
+    t.string "image_url"
     t.integer "team_id"
     t.integer "project_id"
     t.datetime "created_at", precision: 6, null: false
@@ -40,7 +42,5 @@ ActiveRecord::Schema.define(version: 2022_06_23_011832) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "members", "projects"
-  add_foreign_key "members", "teams"
   add_foreign_key "projects", "teams"
 end
