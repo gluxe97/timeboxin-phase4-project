@@ -1,20 +1,21 @@
 import React from "react";
 
-function LoggedIn(setCurrentUser){
+function LoggedIn({setCurrentUser,setIsAuthenticated,setNewUser}){
 
     const handleLogout = ()=>{
         fetch('logout', {method: "DELETE"})
         .then(res=>{
             if(res.ok){
-                setCurrentUser(null)
+                setCurrentUser(null);
+                setIsAuthenticated(false);
+                setNewUser(false);
             }
         })
     }
+    
 
     return(
-        <div>
-            <button onClick={handleLogout}>Logout</button>
-        </div>
+     <button className="log-button" onClick={handleLogout}>Logout</button>
     )
 }
 

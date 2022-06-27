@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Projects from './routes/Projects';
 import Login from './routes/Login';
 import Team from './routes/Team';
+import Signup from './Signup';
 
 
 const root = ReactDOM.createRoot(
@@ -16,9 +17,10 @@ root.render(
 <BrowserRouter>
   <Routes>
     <Route path="/" element={<App/>}/>
+      <Route path="/signup" element={<Signup/>}/>
+      <Route path="/login" element={<Login/>}/>
     <Route path="/projects" element={<Projects/>}/>
     <Route path="/team" element={<Team/>}/>
-    <Route path="/login" element={<Login/>}/>
   </Routes>
 </BrowserRouter>);
 

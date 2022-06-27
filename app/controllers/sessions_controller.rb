@@ -1,11 +1,12 @@
 class SessionsController < ApplicationController
   def create
-    member = Member.find_by_username(params[:username])
-    if user&.authenticate(params[:password])
+    member = Member.find_by(username: params[:username])
+    if member&.authenticate(params[:password])
       session[:member_id]= member.id 
-      render json: user, status: :okay
+      render json: member, status: :ok
     else
-      render json: "Invalid Credentials. Try again!", status: :unauthorized
+      render json: {error:"Invalid Credentials. Try again!"}, status: :unauthorized
+    end
   end
 
   def destroy

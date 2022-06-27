@@ -1,6 +1,9 @@
 import React, {useState} from "react";
+import App from "./App";
+import { Link } from "react-router-dom";
 
-function Signup({setCurrentUser,setIsAuthenticated}){
+function Signup({setCurrentUser,setIsAuthenticated,setNewUser}){
+    
     const[formData,setFormData]=useState({
         username: "",
         name: "",
@@ -14,7 +17,7 @@ function Signup({setCurrentUser,setIsAuthenticated}){
             [e.target.name]: e.target.value,
         });
     }; 
-
+    
     function handleSubmit(e){
         e.preventDefault();
 
@@ -32,6 +35,7 @@ function Signup({setCurrentUser,setIsAuthenticated}){
                 res.json().then((user)=>{
                     setCurrentUser(user)
                     setIsAuthenticated(true);
+                    setNewUser(false);
                 });
             } else {
                 res.json().then((errors)=>{
@@ -40,7 +44,6 @@ function Signup({setCurrentUser,setIsAuthenticated}){
             }
         });
     }
-
 
 
     return(
@@ -57,7 +60,9 @@ function Signup({setCurrentUser,setIsAuthenticated}){
                         <input onChange={handleChange} name="password" type='password' placeholder='Password' className='input-line full-width' value={formData.password}></input>
                       
                     </div>
+                    <Link to="/" element={<App/>}>
                     <div><button className='ghost-round full-width'>Create Account</button></div>
+                    </Link>
                 </div>
             </div>
         </div>

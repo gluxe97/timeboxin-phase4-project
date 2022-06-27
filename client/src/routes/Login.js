@@ -1,14 +1,16 @@
 import React, {useState} from "react";
 import "../App.css"
+import { Link } from "react-router-dom";
+import Signup from "../Signup";
+
 
 function Login({setCurrentUser}){
 
 const [formData,setFormData]=useState({
     username: "",
-    name: "",
-    password: "",
-    team_id: "",
-    project_id: ""});
+    password: ""});
+
+   
 
     const handleChange = (e)=>{
 
@@ -23,7 +25,7 @@ const [formData,setFormData]=useState({
         const userCreds = {...formData};
         console.log(userCreds)
 
-        fetch("/members", {
+        fetch("/login", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -32,7 +34,9 @@ const [formData,setFormData]=useState({
         }).then ((res)=>{
             if (res.ok) {
                 res.json().then((user)=>{
+                    console.log(user);
                     setCurrentUser(user);
+
                 });
             } else {
                 res.json().then((errors)=>{
@@ -45,8 +49,9 @@ const [formData,setFormData]=useState({
     
     console.log(formData);
     
-    return(
-        <form onSubmit={handleSubmit}>
+    return( 
+        
+        <form >
             <div className='bold-line'></div><div className='container'>
             <div className='window'>
                 <div className='overlay'></div>
@@ -57,11 +62,16 @@ const [formData,setFormData]=useState({
                         <input onChange={handleChange} name="username" type='text' placeholder='Username' className='input-line full-width' value={formData.username}></input>
                         <input onChange={handleChange} name="password" type='password' placeholder='Password' className='input-line full-width' value={formData.password}></input>
                     </div>
-                    <div><button className='ghost-round full-width'>Login</button></div>
+                    <div><button onClick={handleSubmit} className='ghost-round full-width'>Login</button></div>
+                    <h3>Don't have an account?</h3>
+                    <Link to="/signup" element={<Signup/>}>
+                        <div><button className='ghost-round full-width'>Signup</button></div>
+                    </Link>
                 </div>
             </div>
         </div>
         </form>
+
     )
 }
 

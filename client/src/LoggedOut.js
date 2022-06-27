@@ -8,11 +8,9 @@ function LoggedOut(){
 
 
     return(
-        <div>
-            <button>
-            <Link to="/login">Login</Link>
-            </button>
-        </div>
+        <button className="log-button">
+          <Link to="/login">Login</Link>
+        </button>
     )
 }
 

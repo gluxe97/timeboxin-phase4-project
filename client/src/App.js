@@ -1,13 +1,16 @@
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import React, {useState, useEffect} from "react";
 import LoggedIn from "./LoggedIn";
 import LoggedOut from "./LoggedOut";
+import Login from "./routes/Login";
 import Signup from "./Signup";
+import Projects from "./routes/Projects";
 
 
 function App() {
   const [isAuthenticated,setIsAuthenticated]=useState(false);
   const [currentUser,setCurrentUser]=useState(null);
+  const [newUser,setNewUser]=useState(true);
 
   useEffect (()=>{
     fetch('/me')
@@ -22,8 +25,14 @@ function App() {
   },[]);
   console.log(currentUser);
 
-  if(!isAuthenticated){
-     return <Signup setCurrentUser={setCurrentUser} setIsAuthenticated={setIsAuthenticated}/>}
+//  if(!isAuthenticated){
+//      return (
+//      <div>
+//       {newUser ? <Signup setNewUser={setNewUser} setIsAuthenticated={setIsAuthenticated} setCurrentUser={setCurrentUser}/> : <Login setCurrentUser={setCurrentUser}/>}
+//      </div>)}
+
+console.log(currentUser);
+console.log(isAuthenticated);
 
   return (
     <div className="App">
@@ -36,13 +45,12 @@ function App() {
           paddingBottom: "1rem",
         }}>
         <Link to="/projects">My Projects</Link>
-        <Link to="/login">Login</Link>
+        
         <Link to="/team">My Team</Link>
       </nav>
-      <div>
-      <div>
-      </div>
-        <div>{isAuthenticated ? <LoggedIn setCurrentUser={setCurrentUser} /> : <LoggedOut setCurrentUser={setCurrentUser}/>}</div>
+      <div className="main-display">
+        {isAuthenticated ? <LoggedIn setNewUser={setNewUser} setIsAuthenticated={setIsAuthenticated} setCurrentUser={setCurrentUser} /> : <LoggedOut setCurrentUser={setCurrentUser}/>}
+        {isAuthenticated ? <Link to="/projects" element={<Projects/>}><button>Create a new project</button></Link> : null}
       </div>
     </div>
   );

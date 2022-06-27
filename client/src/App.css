@@ -214,3 +214,34 @@ button:focus {
     height: 100%;
   }
 }
+
+nav{
+margin:auto;
+display:flex;
+flex-direction: row;
+justify-content: space-around;
+border: black 2px ;
+box-shadow: 1px;
+}
+
+header{
+  margin:auto;
+  padding-left: 40%;
+  box-shadow: 1px;
+}
+
+button.log-button{
+  size:larger;
+  padding:30px;
+  margin:auto;
+  box-shadow: 3px 3px;
+
+}
+
+.main-display{
+  display:flex;
+  height:75vh;
+  width:100vw;
+  background-image: url(https://images.pexels.com/photos/310452/pexels-photo-310452.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
+}
+
