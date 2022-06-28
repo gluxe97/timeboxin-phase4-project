@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import "../App.css"
 import { Link } from "react-router-dom";
 import Signup from "../Signup";
-
+import App from "../App";
 
 function Login({setCurrentUser}){
 
@@ -62,7 +62,9 @@ const [formData,setFormData]=useState({
                         <input onChange={handleChange} name="username" type='text' placeholder='Username' className='input-line full-width' value={formData.username}></input>
                         <input onChange={handleChange} name="password" type='password' placeholder='Password' className='input-line full-width' value={formData.password}></input>
                     </div>
+                    <Link to="/" element={<App/>}>
                     <div><button onClick={handleSubmit} className='ghost-round full-width'>Login</button></div>
+                    </Link>
                     <h3>Don't have an account?</h3>
                     <Link to="/signup" element={<Signup/>}>
                         <div><button className='ghost-round full-width'>Signup</button></div>

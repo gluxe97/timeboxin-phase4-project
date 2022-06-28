@@ -1,6 +1,7 @@
 
 /* style for form */
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,300,100,500);
+@import url(https://fonts.googleapis.com/css2?family=Diplomata+SC&family=League+Gothic&display=swap);
 body,
 html {
   margin: 0;
@@ -226,8 +227,24 @@ box-shadow: 1px;
 
 header{
   margin:auto;
-  padding-left: 40%;
-  box-shadow: 1px;
+  display:flex;
+  justify-content: center;
+  height:20vh;
+  width:100vw;
+  background-color: #EBC385;
+}
+.web-name{
+  padding-left:45%;
+  width: 60vw;
+  font-family: 'Diplomata SC', cursive;
+  font-family: 'League Gothic', sans-serif;
+}
+.header-clock{
+  margin:auto;
+  height:20vh;
+  width:60vw;;
+  background-position: center;
+  background-image: url(https://images.pexels.com/photos/6616845/pexels-photo-6616845.jpeg?auto=compress&cs=tinysrgb&w=1260&h=190&dpr=1) ;
 }
 
 button.log-button{
@@ -240,8 +257,28 @@ button.log-button{
 
 .main-display{
   display:flex;
+  flex-direction: column;
+  align-items: center;
   height:75vh;
   width:100vw;
   background-image: url(https://images.pexels.com/photos/310452/pexels-photo-310452.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
 }
 
+.med-card{
+ display:flex;
+ flex-direction: column;
+ align-items: center;
+ margin:auto;
+ border: solid black 3px;
+ height:40%;
+ width:50%;
+ box-shadow: 0 8px 16px 0;
+ padding:2px 16px;
+background-color: azure;
+overflow: auto;
+}
+.med-card img{
+max-height: 200px;
+max-width:200px;
+border-radius: 4px;
+}

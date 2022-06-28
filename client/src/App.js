@@ -36,8 +36,11 @@ console.log(isAuthenticated);
 
   return (
     <div className="App">
-      <header className="App-header">
-        <h1>HomePage</h1>
+      <header>
+        <div className="web-name">
+        <h1>Timeboxin'</h1>
+        </div>
+        <div className="header-clock"></div>
       </header>
       <nav 
         style={{
@@ -45,7 +48,7 @@ console.log(isAuthenticated);
           paddingBottom: "1rem",
         }}>
         <Link to="/projects">My Projects</Link>
-        
+        <Link to="/members">Members</Link>
         <Link to="/team">My Team</Link>
       </nav>
       <div className="main-display">

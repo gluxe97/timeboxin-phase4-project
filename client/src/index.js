@@ -8,6 +8,7 @@ import Projects from './routes/Projects';
 import Login from './routes/Login';
 import Team from './routes/Team';
 import Signup from './Signup';
+import Members from './Members';
 
 
 const root = ReactDOM.createRoot(
@@ -20,6 +21,7 @@ root.render(
       <Route path="/signup" element={<Signup/>}/>
       <Route path="/login" element={<Login/>}/>
     <Route path="/projects" element={<Projects/>}/>
+    <Route path="/members" element={<Members/>}/>
     <Route path="/team" element={<Team/>}/>
   </Routes>
 </BrowserRouter>);
